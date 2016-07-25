@@ -14,7 +14,7 @@ var fs = require('fs');
 var neew=[];
 
 
-var rS = fs.createReadStream('crime.csv', 'UTF8');
+var rS = fs.createReadStream('testData.csv', 'UTF8');
 
 
       rS.on('data', function(test) {
