@@ -89,13 +89,14 @@ readl.on('line', function (test){
                               }
 
                       for (var p=0;p<yearArr.length;p++){
-                        if ((condTemp[0])===cond1) {
-                            beatArrO[p]=beatArrO[p]+beatNum;
-                          }
-
-                        else if ((condTemp[0])===cond2) {
-                              beatArrU[p]=beatArrU[p]+beatNum;
+                        if ((condTemp[1]) == yearArr[p]) {
+                            if((condTemp[0]) === cond1){
+                              beatArrO[p]=beatArrO[p]+1;
                             }
+                            else if ((condTemp[0])===cond2) {
+                              beatArrU[p]=beatArrU[p]+1;
+                            }
+                          }
                       }/*--------------End of for -------------*/
                     }
                 }
@@ -113,6 +114,7 @@ readl.on('line', function (test){
 
 
 }).on('close', function(){
-  fs.writeFile('beatRate.json',JSON.stringify(final),'UTF8');
+  console.log(final);
+  //fs.writeFile('beatRate.json',JSON.stringify(final),'UTF8');
   console.log("Successfully Converted");
 });
