@@ -16,7 +16,7 @@ var filteredDataHead = [];
 var beatArrO = [];
 var beatArrU = [];
 var yearArr = [];
-var yearInd = [];
+
 var tempval = 0;
 
 
@@ -25,7 +25,7 @@ function objGen() {
     var preFinal = {};
     preFinal[overTag] = beatArrO[s];
     preFinal[underTag] = beatArrU[s];
-    final[yearInd[s]] = preFinal;
+    final[yearArr[s]] = preFinal;
   }
 }
 
@@ -75,9 +75,7 @@ readl.on('line', function (test){
                             }
                         }/*--------------End of for -------------*/
                     }
-                  for(var z=0; z<yearArr.length; z++){
-                    yearInd[z] = yearTag + yearArr[z];
-                  }
+
                 objGen();
            }
 

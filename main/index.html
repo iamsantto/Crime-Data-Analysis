@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <title>Chicago Crime Data</title>
+
+    <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center">Chicago Crime Data</h1>
+          <!-- Theft Count Graph -->
+          <div class="row">
+            <h3>Theft Statistics (2001-2016)</h3>
+            <div id="theftStat">
+
+            </div>
+          </div>
+          <!-- End of Theft Count Graph -->
+
+          <!-- Arrest Count Graph -->
+          <div class="row">
+            <h3>Assault Statistics (2001-2016)</h3>
+            <div id="assStat">
+
+            </div>
+          </div>
+          <!-- End of arrest count graph -->
+      <div class="foo navbar-fixed-bottom text-center">
+        &copy; Chicago Crime Data
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" charset="utf-8"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="render.js" charset="utf-8"></script>
+  </body>
+</html>
