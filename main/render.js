@@ -30,8 +30,10 @@ d3.json("beatRate.json", function (obj) {
   var xScale = d3.scale.ordinal();
   var yScale = d3.scale.linear();
 
+  var height = 300;
+
   yScale.domain([0,d3.max(totVal)]);
-  yScale.range([0,300]);
+  yScale.range([300,0]);
 
   xScale.domain(keysArray);
   xScale.rangeRoundBands([0,800],0.5);
@@ -46,11 +48,18 @@ d3.json("beatRate.json", function (obj) {
                         .attr("transform","translate(" + margin.left + "," + margin.bottom + ")");
 
                 var xAxisG = g.append("g")
-                    .attr("transform","translate(0,0)");
+                    .attr("transform","translate(0,300)");
                 var yAxisG = g.append("g");
 
-                var xAxis = d3.svg.axis() .scale(xScale).orient("top");
+                var xAxis = d3.svg.axis() .scale(xScale).orient("bottom");
                 var yAxis = d3.svg.axis() .scale(yScale).orient("left");
+
+
+                var yAdjust = function (d){
+                  return (height - yScale(d));
+                }
+
+
 
 
     xAxisG.call(xAxis);
@@ -65,8 +74,8 @@ d3.json("beatRate.json", function (obj) {
              .data(totVal)
              .enter().append("rect")
              .style("fill","blue")
-             .attr("y",0)
-             .attr("height", yScale)
+             .attr("height", yAdjust)
+             .attr("y", yScale)
              .attr("width", 20)
 
     var stack = one.selectAll("rect");
@@ -76,8 +85,8 @@ d3.json("beatRate.json", function (obj) {
         two.selectAll("rect")
              .data(underArray)
              .enter().append("rect")
-             .attr("y",0)
-             .attr("height", yScale)
+             .attr("y", yScale)
+             .attr("height", yAdjust)
              .attr("width", 20)
              .attr("fill","red")
 
@@ -89,22 +98,29 @@ d3.json("beatRate.json", function (obj) {
             .style("fill","red")
             .attr("height","20")
             .attr("width","20")
-            .attr("x","600")
-            .attr("y","300");
+            .attr("x","700")
+            .attr("y","20");
         graph.append("text")
             .text("Thefts <500")
-            .attr("x","625")
-            .attr("y","315");
+            .attr("x","725")
+            .attr("y","35");
             graph.append("rect")
                 .style("fill","blue")
                 .attr("height","20")
                 .attr("width","20")
-                .attr("x","600")
-                .attr("y","350");
+                .attr("x","700")
+                .attr("y","60");
             graph.append("text")
                 .text("Thefts >500")
-                .attr("x","625")
-                .attr("y","365")
+                .attr("x","725")
+                .attr("y","75")
+                graph.append("text")
+                    .text("Year")
+                    .attr("x","450")
+                    .attr("y","390")
+                    .style("font-size","large");
+
+
 
 
 
@@ -152,7 +168,7 @@ d3.json("arrestCount.json", function (obj) {
               var yScale = d3.scale.linear();
 
               yScale.domain([0,d3.max(notArrestVal)]);
-              yScale.range([0,300]);
+              yScale.range([300,0]);
 
               xScale.domain(keysArray);
               xScale.rangeRoundBands([0,800]);
@@ -161,10 +177,10 @@ d3.json("arrestCount.json", function (obj) {
                       .attr("transform","translate(" + margin.left + "," + margin.bottom + ")");
 
               var xAxisG = g.append("g")
-                  .attr("transform","translate(0,0)");
+                  .attr("transform","translate(0,300)");
               var yAxisG = g.append("g");
 
-              var xAxis = d3.svg.axis() .scale(xScale).orient("top");
+              var xAxis = d3.svg.axis() .scale(xScale).orient("bottom");
               var yAxis = d3.svg.axis() .scale(yScale).orient("left");
 
 
@@ -200,21 +216,27 @@ d3.json("arrestCount.json", function (obj) {
                 .style("fill","red")
                 .attr("height","20")
                 .attr("width","20")
-                .attr("x","600")
-                .attr("y","300");
+                .attr("x","700")
+                .attr("y","20");
             graph.append("text")
                 .text("Arrested")
-                .attr("x","625")
-                .attr("y","315");
+                .attr("x","725")
+                .attr("y","35");
                 graph.append("rect")
                     .style("fill","blue")
                     .attr("height","20")
                     .attr("width","20")
-                    .attr("x","600")
-                    .attr("y","350");
+                    .attr("x","700")
+                    .attr("y","60");
                 graph.append("text")
                     .text("Not Arrested")
-                    .attr("x","625")
-                    .attr("y","365")
+                    .attr("x","725")
+                    .attr("y","75")
+                    graph.append("text")
+                        .text("Year")
+                        .attr("x","450")
+                        .attr("y","390")
+                        .style("font-size","large");
+
 
 });
